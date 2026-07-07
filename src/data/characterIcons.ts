@@ -1,9 +1,9 @@
-import { Brain, Flame, MessageCircleQuestion, Crown, Palette, FlaskConical, BookOpen, Sword, User, LucideIcon } from 'lucide-react'
+import { Brain, Flame, MessageCircle, Crown, Palette, FlaskConical, BookOpen, Sword, User, LucideIcon } from 'lucide-react'
 
 export const iconMap: Record<string, LucideIcon> = {
   einstein: Brain,
   nietzsche: Flame,
-  sokrates: MessageCircleQuestion,
+  sokrates: MessageCircle,
   kleopatra: Crown,
   davinci: Palette,
   curie: FlaskConical,
