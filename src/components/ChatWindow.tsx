@@ -4,6 +4,7 @@ import { Character, ChatMessage, CurrentUser } from '../types'
 import { db } from '../lib/db'
 import { getGuestId } from '../lib/session'
 import { generateResponse, getGreeting } from '../lib/aiEngine'
+import { generateAIResponse, HistoryMessage } from '../lib/geminiClient'
 import { getIcon } from '../data/characterIcons'
 
 interface ChatWindowProps {
@@ -88,20 +89,33 @@ export default function ChatWindow({ character, user, onBack }: ChatWindowProps)
       role: 'user',
       content: text,
     })
-    setMessages((prev) => [...prev, userMsg])
+    const updatedMessages = [...messages, userMsg]
+    setMessages(updatedMessages)
     setTyping(true)
 
-    const delay = 700 + Math.random() * 900
-    setTimeout(async () => {
-      const responseText = generateResponse(character.slug, text)
+    try {
+      const history: HistoryMessage[] = updatedMessages.map((m) => ({
+        role: m.role,
+        content: m.content,
+      }))
+
+      let responseText: string
+      try {
+        responseText = await generateAIResponse(character, history.slice(0, -1), text)
+      } catch (aiError) {
+        console.error('Gemini API hatası, yerel yanıta düşülüyor:', aiError)
+        responseText = generateResponse(character.slug, text)
+      }
+
       const [aiMsg] = await db.insert('messages', {
         conversation_id: conversationId,
         role: 'assistant',
         content: responseText,
       })
       setMessages((prev) => [...prev, aiMsg])
+    } finally {
       setTyping(false)
-    }, delay)
+    }
   }
 
   return (
