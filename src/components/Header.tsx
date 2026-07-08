@@ -1,5 +1,6 @@
-import { Clock3, LogOut, User as UserIcon, Sparkles } from 'lucide-react'
+import { LogOut, User as UserIcon } from 'lucide-react'
 import { CurrentUser } from '../types'
+import Logo from './Logo'
 
 interface HeaderProps {
   user: CurrentUser | null
@@ -13,13 +14,12 @@ export default function Header({ user, onHome, onOpenAuth, onLogout }: HeaderPro
     <header className="sticky top-0 z-30 backdrop-blur-md bg-[#150c2e]/80 border-b border-white/10">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
         <button onClick={onHome} className="flex items-center gap-2 group">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-fuchsia-500 to-indigo-500 flex items-center justify-center shadow-lg shadow-fuchsia-500/30 group-hover:scale-110 transition-transform">
-            <Clock3 className="w-5 h-5 text-white" />
+          <div className="group-hover:scale-110 transition-transform drop-shadow-[0_0_10px_rgba(217,70,239,0.35)]">
+            <Logo className="w-10 h-10" />
           </div>
           <span className="font-extrabold text-lg sm:text-xl text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-400 via-purple-300 to-indigo-400">
             Zaman Ötesi Sohbet
           </span>
-          <Sparkles className="w-4 h-4 text-yellow-300 animate-pulse hidden sm:block" />
         </button>
 
         <div className="flex items-center gap-2 sm:gap-3">

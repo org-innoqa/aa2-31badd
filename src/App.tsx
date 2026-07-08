@@ -9,6 +9,7 @@ import CharacterCard from './components/CharacterCard'
 import ChatWindow from './components/ChatWindow'
 import AuthModal from './components/AuthModal'
 import BackgroundBlobs from './components/BackgroundBlobs'
+import Logo from './components/Logo'
 import { Clock3, Sparkles, MessageCircle, ShieldCheck } from 'lucide-react'
 
 export default function App() {
@@ -59,7 +60,10 @@ export default function App() {
       ) : (
         <main className="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-16">
           <div className="text-center max-w-2xl mx-auto mb-14">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-purple-200 mb-5 animate-float">
+            <div className="flex justify-center mb-5 animate-float">
+              <Logo className="w-16 h-16 drop-shadow-[0_0_20px_rgba(217,70,239,0.45)]" />
+            </div>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-purple-200 mb-5">
               <Sparkles className="w-3.5 h-3.5 text-yellow-300" />
               Tarihin en ilginç zihinleriyle sohbet et
             </div>
