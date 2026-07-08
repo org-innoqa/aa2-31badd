@@ -25,7 +25,7 @@ export default {
       animation: {
         blob: 'blob 7s infinite',
         float: 'float 3s ease-in-out infinite',
-        'fade-in-up': 'fade-in-up 0.4s ease-out',
+        'fade-in-up': 'fade-in-up 0.4s ease-out forwards',
         typingDot: 'typingDot 1.2s infinite',
       },
     },
