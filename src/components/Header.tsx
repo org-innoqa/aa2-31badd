@@ -18,7 +18,7 @@ export default function Header({ user, onHome, onOpenAuth, onLogout }: HeaderPro
             <Logo className="w-10 h-10" />
           </div>
           <span className="font-extrabold text-lg sm:text-xl text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-400 via-purple-300 to-indigo-400">
-            Zaman Ötesi Sohbet
+            Afterwords
           </span>
         </button>
 

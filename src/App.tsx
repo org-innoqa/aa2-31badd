@@ -65,11 +65,11 @@ export default function App() {
             </div>
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-purple-200 mb-5">
               <Sparkles className="w-3.5 h-3.5 text-yellow-300" />
-              Tarihin en ilginç zihinleriyle sohbet et
+              Ask your Legends
             </div>
             <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight mb-4">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-400 via-purple-300 to-indigo-400">
-                Zaman Ötesi Sohbet
+                Afterwords
               </span>
             </h1>
             <p className="text-purple-100/70 text-base sm:text-lg">
