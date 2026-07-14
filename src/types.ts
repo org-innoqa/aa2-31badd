@@ -8,6 +8,9 @@ export interface Character {
   color_from: string
   color_to: string
   created_at?: string
+  /** Optional per-figure prompt from the DB. Appended to the base persona prompt, never
+   *  replaces it — substituting it would let a bad row drop the anti-coding guardrail. */
+  system_prompt?: string
 }
 
 export interface CurrentUser {
