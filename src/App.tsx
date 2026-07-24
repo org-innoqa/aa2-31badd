@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { db } from './lib/db'
 import { Character, CurrentUser } from './types'
 import { getCurrentUser, setCurrentUser } from './lib/session'
-import { logoutUser } from './lib/auth'
+import { logoutUser, deleteAccount } from './lib/auth'
 import Header from './components/Header'
 import CharacterCard from './components/CharacterCard'
 import ChatWindow from './components/ChatWindow'
@@ -45,6 +45,24 @@ export default function App() {
     setAuthModal(null)
   }
 
+  async function handleDeleteAccount() {
+    if (!user) return
+    const confirmed = window.confirm(
+      'Hesabını kalıcı olarak silmek istediğine emin misin?\n\n' +
+        'Tüm sohbetlerin ve mesajların geri alınamaz şekilde silinecek. Bu işlem geri alınamaz.'
+    )
+    if (!confirmed) return
+    try {
+      await deleteAccount(user.id)
+      setUser(null)
+      setSelected(null)
+      window.alert('Hesabın ve tüm verilerin kalıcı olarak silindi.')
+    } catch (e) {
+      console.error(e)
+      window.alert('Hesap silinirken bir hata oluştu. Lütfen tekrar dene.')
+    }
+  }
+
   return (
     <div className="min-h-screen text-white relative">
       <BackgroundBlobs />
@@ -53,6 +71,7 @@ export default function App() {
         onHome={() => setSelected(null)}
         onOpenAuth={(mode) => setAuthModal(mode)}
         onLogout={handleLogout}
+        onDeleteAccount={handleDeleteAccount}
       />
 
       {selected ? (

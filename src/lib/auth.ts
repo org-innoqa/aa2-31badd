@@ -44,3 +44,14 @@ export async function loginUser(email: string, password: string): Promise<Curren
 export function logoutUser(): void {
   setCurrentUser(null)
 }
+
+/**
+ * Permanently deletes the given user's account and all associated data.
+ * The `users` row is removed; `conversations` (FK ON DELETE CASCADE) and their
+ * `messages` (FK ON DELETE CASCADE) are deleted automatically by the database.
+ * Clears the local session on success.
+ */
+export async function deleteAccount(userId: number): Promise<void> {
+  await db.remove('users', `?id=eq.${userId}`)
+  setCurrentUser(null)
+}

@@ -1,4 +1,4 @@
-import { LogOut, User as UserIcon } from 'lucide-react'
+import { LogOut, Trash2, User as UserIcon } from 'lucide-react'
 import { CurrentUser } from '../types'
 import Logo from './Logo'
 
@@ -7,9 +7,10 @@ interface HeaderProps {
   onHome: () => void
   onOpenAuth: (mode: 'login' | 'register') => void
   onLogout: () => void
+  onDeleteAccount: () => void
 }
 
-export default function Header({ user, onHome, onOpenAuth, onLogout }: HeaderProps) {
+export default function Header({ user, onHome, onOpenAuth, onLogout, onDeleteAccount }: HeaderProps) {
   return (
     <header className="sticky top-0 z-30 backdrop-blur-md bg-[#150c2e]/80 border-b border-white/10">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
@@ -35,6 +36,14 @@ export default function Header({ user, onHome, onOpenAuth, onLogout }: HeaderPro
               >
                 <LogOut className="w-4 h-4" />
                 <span className="hidden sm:inline">Çıkış</span>
+              </button>
+              <button
+                onClick={onDeleteAccount}
+                title="Hesabı Sil"
+                className="flex items-center gap-1.5 text-sm px-3 py-1.5 rounded-full bg-red-500/10 hover:bg-red-500/20 border border-red-500/30 text-red-200 transition-colors"
+              >
+                <Trash2 className="w-4 h-4" />
+                <span className="hidden sm:inline">Hesabı Sil</span>
               </button>
             </>
           ) : (
